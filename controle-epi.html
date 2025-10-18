@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controle de EPIs</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { background-color: #f8f9fa; }
+        .card { margin-bottom: 1.5rem; }
+        .header-logo {
+            max-width: 250px; /* Ajuste o tamanho da logo conforme necessário */
+            height: auto;
+            display: block; 
+            margin: 20px auto; /* Centraliza a imagem e adiciona margem vertical */
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-4">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA4QAAABACAYAAAD6aJq5AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAcxSURBVHgB7d0LjxRVGAfwf0i6RBoFESQRzQoGgXUjQRDxJkE0k0gQERQxXkTA64OAgPggGg0GBvUmgkYxCBgxPjFqfJMYg/qgS6MiiAgYk/K6r865s/e+p7Nru+vKrnPus2fPvTfz3O+9c25yRCIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIi-IiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIi-IiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIi-IiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIi-mitaIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIi-iIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIi-iIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIi-iIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIi-,-" alt="Logo da Direcional" class="header-logo">
+        
+        <h1 class="text-center mb-4">Controle de Uso de EPIs</h1>
+
+        <div class="card">
+            <div class="card-header">
+                <strong>Registrar Novo Uso</strong>
+            </div>
+            <div class="card-body">
+                <div class="row align-items-end g-3">
+                    <div class="col-md-4">
+                        <label for="tipo-epi" class="form-label">Tipo de EPI</label>
+                        <select id="tipo-epi" class="form-select"></select>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="data" class="form-label">Data</o>
+                        <input type="date" id="data" class="form-control">
+                    </div>
+                    <div class="col-md-3">
+                        <label for="quantidade" class="form-label">Quantidade</label>
+                        <input type="number" id="quantidade" class="form-control" min="1" placeholder="Ex: 50">
+                    </div>
+                    <div class="col-md-2">
+                        <button onclick="salvarRegistro()" class="btn btn-primary w-100">Adicionar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <strong>Relatório Geral de Consumo</strong>
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered text-center">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Tipo de EPI</th>
+                            <th>Total no Mês</th>
+                            <th>Total na Semana</th>
+                            <th>Total Hoje</th>
+                        </tr>
+                    </thead>
+                    <tbody id="relatorio-tabela">
+                        </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <strong>Histórico de Lançamentos</strong>
+            </div>
+            <div class="card-body">
+                <table class="table table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th>Data</th>
+                            <th>Tipo de EPI</th>
+                            <th>Quantidade</th>
+                            <th>Ação</th> </tr>
+                    </thead>
+                    <tbody id="historico-tabela">
+                        </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <div class="text-center mt-3 mb-5">
+            <button onclick="limparDados()" class="btn btn-danger">Limpar Todos os Dados</button>
+        </div>
+    </div>
+
+    <script>
+        // --- CONFIGURAÇÃO ---
+        // Para adicionar ou remover EPIs, basta editar esta lista!
+        const LISTA_EPIS = [
+            'LUVA DE MALHA',
+            'LUVA NITRÍLICA',
+            'CAPACETE',
+            'BOTINA DE SEGURANÇA',
+            'ÓCULOS ESCUROS',
+            'ÓCULOS INCOLOR',
+            'PROTETOR CONCHA',
+            'PROTETOR PLUG',
+            'TOUCA ÁRABE',
+            'CARNEIRA',
+            'CALÇA BRIM AMARELO',
+            'CAMISA BRIM AMARELO'
+        ];
+
+        // Defina aqui a sua senha para exclusão.
+        // IMPORTANTE: Altere o valor 'admin123' para uma senha de sua escolha.
+        const SENHA_MESTRE = 'alri123'; 
+
+        // --- LÓGICA DO SISTEMA ---
+
+        /**
+         * Função: popularSelectEPI
+         * Objetivo: Preenche o menu dropdown com os EPIs da LISTA_EPIS.
+         */
+        function popularSelectEPI() {
+            const selectEPI = document.getElementById('tipo-epi');
+            LISTA_EPIS.forEach(epi => {
+                const option = document.createElement('option');
+                option.value = epi;
+                option.textContent = epi;
+                selectEPI.appendChild(option);
+            });
+        }
+        
+        // Define a data de hoje no campo de data por padrão.
+        document.getElementById('data').valueAsDate = new Date();
+
+        /**
+         * Função: salvarRegistro
+         * Objetivo: Salvar um novo registro de uso de EPI no localStorage.
+         */
+        function salvarRegistro() {
+            const epiInput = document.getElementById('tipo-epi').value;
+            const dataInput = document.getElementById('data').value;
+            const quantidadeInput = document.getElementById('quantidade').value;
+
+            // Validação simples para garantir que todos os campos estão preenchidos.
+            if (!epiInput || !dataInput || !quantidadeInput || parseInt(quantidadeInput) <= 0) {
+                alert('Por favor, preencha todos os campos com valores válidos.');
+                return;
+            }
+
+            const novoRegistro = {
+                data: dataInput,
+                epi: epiInput,
+                quantidade: parseInt(quantidadeInput),
+                // Adiciona um ID único para cada registro, facilitando a exclusão
+                id: Date.now() 
+            };
+
+            let registros = JSON.parse(localStorage.getItem('registrosEPIs')) || [];
+            registros.push(novoRegistro);
+            localStorage.setItem('registrosEPIs', JSON.stringify(registros));
+
+            document.getElementById('quantidade').value = '';
+            atualizarTudo(); // Atualiza a tela após salvar
+        }
+        
+        /**
+         * Função: excluirRegistro
+         * Objetivo: Remover um registro específico do localStorage após confirmação por senha.
+         * @param {number} id - O ID único do registro a ser excluído.
+         */
+        function excluirRegistro(id) {
+            const senhaInserida = prompt("Para excluir este item, digite a senha de administrador:");
+            
+            // Se o usuário cancelar o prompt, não faz nada
+            if (senhaInserida === null) {
+                return;
+            }
+
+            if (senhaInserida === SENHA_MESTRE) {
+                let registros = JSON.parse(localStorage.getItem('registrosEPIs')) || [];
+                // Filtra o array, mantendo apenas os registros que NÃO têm o ID correspondente.
+                const registrosAtualizados = registros.filter(registro => registro.id !== id);
+                localStorage.setItem('registrosEPIs', JSON.stringify(registrosAtualizados));
+                atualizarTudo(); // Atualiza a tela para remover o item da lista
+                alert("Registro excluído com sucesso!");
+            } else {
+                alert("Senha incorreta. A exclusão foi cancelada.");
+            }
+        }
+
+        /**
+         * Função: gerarRelatorio
+         * Objetivo: Calcular os totais para cada EPI e exibir na tabela de relatório.
+         */
+        function gerarRelatorio() {
+            const registros = JSON.parse(localStorage.getItem('registrosEPIs')) || [];
+            const hoje = new Date();
+            const inicioDaSemana = new Date(hoje);
+            inicioDaSemana.setDate(hoje.getDate() - hoje.getDay());
+            inicioDaSemana.setHours(0, 0, 0, 0);
+
+            let totais = {};
+            LISTA_EPIS.forEach(epi => {
+                totais[epi] = { hoje: 0, semana: 0, mes: 0 };
+            });
+
+            for (const registro of registros) {
+                const dataRegistro = new Date(registro.data + 'T00:00:00');
+                if (!totais[registro.epi]) continue;
+
+                // Soma para o total do MÊS
+                if (dataRegistro.getFullYear() === hoje.getFullYear() && dataRegistro.getMonth() === hoje.getMonth()) {
+                    totais[registro.epi].mes += registro.quantidade;
+                }
+                // Soma para o total da SEMANA
+                if (dataRegistro >= inicioDaSemana) {
+                    totais[registro.epi].semana += registro.quantidade;
+                }
+                // Soma para o total de HOJE
+                if (dataRegistro.getFullYear() === hoje.getFullYear() &&
+                    dataRegistro.getMonth() === hoje.getMonth() &&
+                    dataRegistro.getDate() === hoje.getDate()) {
+                    totais[registro.epi].hoje += registro.quantidade;
+                }
+            }
+
+            const relatorioCorpo = document.getElementById('relatorio-tabela');
+            relatorioCorpo.innerHTML = '';
+            for (const epi of LISTA_EPIS) {
+                const linha = `<tr>
+                                <td><strong>${epi}</strong></td>
+                                <td>${totais[epi].mes}</td>
+                                <td>${totais[epi].semana}</td>
+                                <td>${totais[epi].hoje}</td>
+                               </tr>`;
+                relatorioCorpo.innerHTML += linha;
+            }
+        }
+
+        /**
+         * Função: exibirHistorico
+         * Objetivo: Mostrar o histórico completo, incluindo um botão para excluir cada item.
+         */
+        function exibirHistorico() {
+            const registros = JSON.parse(localStorage.getItem('registrosEPIs')) || [];
+            const tabelaCorpo = document.getElementById('historico-tabela');
+            tabelaCorpo.innerHTML = '';
+
+            registros.sort((a, b) => new Date(b.data) - new Date(a.data));
+
+            registros.forEach(registro => {
+                const dataFormatada = new Date(registro.data + 'T00:00:00').toLocaleDateString('pt-BR');
+                // Adiciona uma célula <td> com o botão de excluir, passando o ID único do registro para a função de exclusão.
+                const linha = `<tr>
+                                <td>${dataFormatada}</td>
+                                <td>${registro.epi}</td>
+                                <td>${registro.quantidade}</td>
+                                <td>
+                                    <button class="btn btn-danger btn-sm" onclick="excluirRegistro(${registro.id})">
+                                        Excluir
+                                    </button>
+                                </td>
+                               </tr>`;
+                tabelaCorpo.innerHTML += linha;
+            });
+        }
+        
+        /**
+         * Função: limparDados
+         * Objetivo: Apagar TODOS os registros do localStorage, com confirmação por senha.
+         */
+        function limparDados() {
+            const senhaInserida = prompt("Para limpar todos os dados, digite a senha de administrador:");
+            
+            if (senhaInserida === null) {
+                return;
+            }
+            
+            if (senhaInserida === SENHA_MESTRE) {
+                 if (confirm('ATENÇÃO!\n\nIsso apagará permanentemente todo o histórico de registros.\n\nDeseja continuar?')) {
+                    localStorage.removeItem('registrosEPIs');
+                    atualizarTudo();
+                    alert("Todos os dados foram apagados.");
+                }
+            } else {
+                alert("Senha incorreta. Operação cancelada.");
+            }
+        }
+
+        /**
+         * Função: atualizarTudo
+         * Objetivo: Orquestrar a atualização da interface (relatório e histórico).
+         */
+        function atualizarTudo() {
+            gerarRelatorio();
+            exibirHistorico();
+        }
+
+        /**
+         * Evento: DOMContentLoaded
+         * Objetivo: Inicializar o sistema quando a página carregar.
+         */
+        document.addEventListener('DOMContentLoaded', () => {
+            popularSelectEPI(); // Primeiro, preenche o menu de seleção.
+            atualizarTudo();    // Depois, carrega os dados e relatórios.
+        });
+
+    </script>
+</body>
+</html>

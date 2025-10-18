@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criador e Exportador de Notas</title>
+    <!-- Carrega o Tailwind CSS para estilização moderna e responsiva -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Define a fonte Inter e cores padrão */
+        :root {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Estilo para focar o textarea, dando uma borda mais visível */
+        textarea:focus, input:focus {
+            outline: none;
+            border-color: #3b82f6; /* blue-500 */
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.5);
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary': '#4f46e5', // Indigo-600
+                        'primary-dark': '#4338ca', // Indigo-700
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center p-4">
+
+    <!-- Container Principal do App de Notas -->
+    <div class="w-full max-w-2xl bg-white shadow-xl rounded-xl p-6 md:p-8">
+        <h1 class="text-3xl font-bold text-gray-800 mb-6 text-center">
+            📝 Meu Bloco de Notas
+        </h1>
+        <p class="text-sm text-gray-500 mb-6 text-center">
+            Digite sua nota:
+        </p>
+
+        <!-- Campo de Título -->
+        <div class="mb-4">
+            <label for="noteTitle" class="block text-sm font-medium text-gray-700 mb-1">Título da Nota</label>
+            <input type="text" id="noteTitle" placeholder="Ex: Ideias para o projeto de IA" 
+                   class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary transition duration-150" 
+                   value="Nova Nota Sem Título">
+        </div>
+
+        <!-- Campo de Conteúdo -->
+        <div class="mb-6">
+            <label for="noteContent" class="block text-sm font-medium text-gray-700 mb-1">Conteúdo da Nota</label>
+            <textarea id="noteContent" rows="15" placeholder="Comece a digitar sua nota aqui..." 
+                      class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary resize-none transition duration-150"></textarea>
+        </div>
+
+        <!-- Botão de Salvar e Download -->
+        <button id="saveButton" onclick="downloadNote()" 
+                class="w-full flex items-center justify-center bg-primary hover:bg-primary-dark text-white font-semibold py-3 px-4 rounded-lg transition duration-200 shadow-md hover:shadow-lg transform hover:scale-[1.01]">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 011.414-1.414L9 9.586V4a1 1 0 011-1z" clip-rule="evenodd" />
+                <path d="M10 14a1 1 0 00-1 1v1a1 1 0 102 0v-1a1 1 0 00-1-1zM4 10a1 1 0 011-1h10a1 1 0 110 2H5a1 1 0 01-1-1z" />
+            </svg>
+            Salvar e Baixar Nota
+        </button>
+
+        <!-- Área de Mensagens (para feedback) -->
+        <div id="messageArea" class="mt-4 hidden text-center p-3 rounded-lg text-sm font-medium"></div>
+
+    </div>
+
+    <script>
+        /**
+         * Função para remover caracteres especiais e espaços do título
+         * para criar um nome de arquivo válido.
+         * @param {string} title O título da nota.
+         * @returns {string} O título limpo para uso no nome do arquivo.
+         */
+        function sanitizeFilename(title) {
+            // Remove espaços extras, substitui espaços por underscores e remove caracteres não alfanuméricos (exceto traços)
+            return title.trim()
+                        .replace(/\s+/g, '_') // Espaços para underscore
+                        .replace(/[^a-z0-9_ -]/gi, '') // Remove caracteres especiais
+                        .substring(0, 50); // Limita o tamanho para evitar nomes de arquivo muito longos
+        }
+
+        /**
+         * Função principal que formata a nota e inicia o download.
+         */
+        function downloadNote() {
+            const titleInput = document.getElementById('noteTitle');
+            const contentInput = document.getElementById('noteContent');
+            const messageArea = document.getElementById('messageArea');
+
+            const title = titleInput.value.trim();
+            const content = contentInput.value.trim();
+            const timestamp = new Date().toLocaleString('pt-BR');
+
+            if (!content) {
+                showMessage("Por favor, digite algum conteúdo na nota.", "bg-yellow-100 text-yellow-800");
+                return;
+            }
+
+            // 1. Formata o conteúdo que será salvo no arquivo .txt
+            const noteContent = `
+========================================
+Título: ${title || 'Nota Sem Título'}
+Data de Criação: ${timestamp}
+========================================
+
+${content}
+
+========================================
+Salvo via App Bloco de Notas.
+`;
+            
+            // 2. Cria um Blob (objeto de dados imutável) a partir do conteúdo formatado
+            const blob = new Blob([noteContent], { type: 'text/plain;charset=utf-8' });
+
+            // 3. Cria um nome de arquivo seguro
+            const safeTitle = sanitizeFilename(title) || `Nota_${Date.now()}`;
+            const filename = `${safeTitle}.txt`;
+
+            // 4. Cria um link de download temporário e simula o clique
+            const a = document.createElement('a');
+            a.href = URL.createObjectURL(blob); // Cria um URL temporário para o Blob
+            a.download = filename; // Define o nome do arquivo para o download
+
+            // Adiciona o link ao corpo do documento (necessário para Firefox)
+            document.body.appendChild(a);
+            a.click(); // Simula o clique, iniciando o download
+
+            // 5. Limpa o objeto URL temporário e o link do DOM
+            document.body.removeChild(a);
+            URL.revokeObjectURL(a.href);
+
+            // Exibe mensagem de sucesso
+            showMessage(`Nota salva com sucesso! Arquivo "${filename}" baixado.`, "bg-green-100 text-green-800");
+        }
+
+        /**
+         * Exibe uma mensagem de feedback na tela.
+         * @param {string} message O texto da mensagem.
+         * @param {string} classes Classes Tailwind para estilizar a mensagem.
+         */
+        function showMessage(message, classes) {
+            const messageArea = document.getElementById('messageArea');
+            messageArea.textContent = message;
+            messageArea.className = `mt-4 text-center p-3 rounded-lg text-sm font-medium ${classes}`;
+            messageArea.classList.remove('hidden');
+
+            // Oculta a mensagem após 5 segundos
+            setTimeout(() => {
+                messageArea.classList.add('hidden');
+            }, 5000);
+        }
+    </script>
+</body>
+</html>
