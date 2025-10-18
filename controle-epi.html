@@ -189,54 +189,68 @@
         }
 
         /**
-         * Função: gerarRelatorio
-         * Objetivo: Calcular os totais para cada EPI e exibir na tabela de relatório.
-         */
-        function gerarRelatorio() {
-            const registros = JSON.parse(localStorage.getItem('registrosEPIs')) || [];
-            const hoje = new Date();
-            const inicioDaSemana = new Date(hoje);
-            inicioDaSemana.setDate(hoje.getDate() - hoje.getDay());
-            inicioDaSemana.setHours(0, 0, 0, 0);
+     * Função: gerarRelatorio
+     * Objetivo: Calcular os totais de cada EPI e exibi-los na tabela de relatório.
+     */
+    function gerarRelatorio() {
+        const registros = JSON.parse(localStorage.getItem('registrosEPIs')) || [];
+        
+        // --- Definição dos Períodos de Tempo ---
+        const hoje = new Date();
+        hoje.setHours(0, 0, 0, 0); // Zera a hora para comparar apenas a data
 
-            let totais = {};
-            LISTA_EPIS.forEach(epi => {
-                totais[epi] = { hoje: 0, semana: 0, mes: 0 };
-            });
+        // Início da semana (segunda-feira)
+        const inicioDaSemana = new Date(hoje);
+        const diaDaSemana = hoje.getDay(); // Domingo = 0, Segunda = 1, ...
+        const diff = hoje.getDate() - diaDaSemana + (diaDaSemana === 0 ? -6 : 1); // Ajusta para segunda-feira
+        inicioDaSemana.setDate(diff);
 
-            for (const registro of registros) {
-                const dataRegistro = new Date(registro.data + 'T00:00:00');
-                if (!totais[registro.epi]) continue;
+        // Início do mês
+        const inicioDoMes = new Date(hoje.getFullYear(), hoje.getMonth(), 1);
 
-                // Soma para o total do MÊS
-                if (dataRegistro.getFullYear() === hoje.getFullYear() && dataRegistro.getMonth() === hoje.getMonth()) {
-                    totais[registro.epi].mes += registro.quantidade;
-                }
-                // Soma para o total da SEMANA
-                if (dataRegistro >= inicioDaSemana) {
-                    totais[registro.epi].semana += registro.quantidade;
-                }
-                // Soma para o total de HOJE
-                if (dataRegistro.getFullYear() === hoje.getFullYear() &&
-                    dataRegistro.getMonth() === hoje.getMonth() &&
-                    dataRegistro.getDate() === hoje.getDate()) {
-                    totais[registro.epi].hoje += registro.quantidade;
-                }
+        // Objeto para armazenar os totais calculados
+        let totais = {};
+        LISTA_EPIS.forEach(epi => {
+            totais[epi] = { hoje: 0, semana: 0, mes: 0 };
+        });
+
+        // Loop para calcular os totais para cada registro
+        for (const registro of registros) {
+            const dataRegistro = new Date(registro.data + 'T00:00:00');
+            
+            // Ignora se o EPI do registro não estiver mais na lista principal
+            if (!totais[registro.epi]) continue;
+
+            // Verifica se o registro pertence ao período e soma a quantidade
+            if (dataRegistro.getTime() === hoje.getTime()) {
+                totais[registro.epi].hoje += registro.quantidade;
             }
-
-            const relatorioCorpo = document.getElementById('relatorio-tabela');
-            relatorioCorpo.innerHTML = '';
-            for (const epi of LISTA_EPIS) {
-                const linha = `<tr>
-                                <td><strong>${epi}</strong></td>
-                                <td>${totais[epi].mes}</td>
-                                <td>${totais[epi].semana}</td>
-                                <td>${totais[epi].hoje}</td>
-                               </tr>`;
-                relatorioCorpo.innerHTML += linha;
+            if (dataRegistro >= inicioDaSemana) {
+                totais[registro.epi].semana += registro.quantidade;
+            }
+            if (dataRegistro >= inicioDoMes) {
+                totais[registro.epi].mes += registro.quantidade;
             }
         }
 
+        // Monta a tabela de relatório com os dados calculados
+        const relatorioCorpo = document.getElementById('relatorio-tabela');
+        relatorioCorpo.innerHTML = '';
+        for (const epi of LISTA_EPIS) {
+            const linha = `<tr>
+                            <td><strong>${epi}</strong></td>
+                            <td>${totais[epi].mes}</td>
+                            <td>${totais[epi].semana}</td>
+                            <td>${totais[epi].hoje}</td>
+                           </tr>`;
+            relatorioCorpo.innerHTML += linha;
+        }
+    }
+
+    /**
+     * Função: exibirHistorico
+     * Objetivo: Mostrar todos os lançamentos na tabela de histórico, com um botão de exclusão para cada um.
+     */
         /**
          * Função: exibirHistorico
          * Objetivo: Mostrar o histórico completo, incluindo um botão para excluir cada item.
