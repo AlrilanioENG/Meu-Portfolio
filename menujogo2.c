@@ -30,4 +30,7 @@ if (palpite == numeroSecreto) {
    printf("Você errou! O número secreto era %d \n", numeroSecreto);
   }
  break;
+ case 2:
+ printf("Você deve escolher um número de 1 a 10 enquanto a máquina em forma aleatória irá escolher um, caso o número que escolherem for igual, você ganha, caso não, você perde!");
+
  }}
